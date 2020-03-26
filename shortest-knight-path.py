@@ -128,4 +128,4 @@ def knight(p1, p2, minX, maxX, minY, maxY, paths = []):
     f.close()
     # return smallestPaths
 
-knight('a1', 'h8', 'a', 'h', '1', '8')
+knight('a1', 'd4', 'a', 'e', '1', '5')
