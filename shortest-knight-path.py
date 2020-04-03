@@ -76,8 +76,7 @@ def knight(p1, p2, minX, maxX, minY, maxY, paths = []):
                 or moveRightDown(start) == end or moveLeftUp(start) == end or moveLeftDown(start) == end:
                     alreadyVisited.append(end)
                     paths.append([count + 1, alreadyVisited])
-                    if count < lowestEndCount:
-                        lowestEndCount = count
+                    lowestEndCount = count + 1
                 else:
                     if paths != []:
                         lowestEndCount = paths[-1][0]
