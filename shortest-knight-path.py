@@ -65,23 +65,22 @@ def knight(p1, p2, minX, maxX, minY, maxY, paths = []):
             return p1LCopy
         else:
             return p1L
-    def moveKnight(start, end, paths, lowestEndCount = 1000000000000, alreadyVisited = [], count = 0):
+    def moveKnight(start, end, paths, lowestEndCount = 1000000000, alreadyVisited = [], count = 0):
         if alreadyVisited == []:
             alreadyVisited.append(start)
         if start == end:
-            # print(count, alreadyVisited, "\n")
             paths.append([count, alreadyVisited])
-            if count < lowestEndCount:
-                lowestEndCount = count
-            # return count
-            # print(paths, '\n')
         else:
             if count < lowestEndCount:
                 if moveUpRight(start) == end or moveDownRight(start) == end or moveUpLeft(start) == end or moveDownLeft(start) == end or moveRightUp(start) == end\
                 or moveRightDown(start) == end or moveLeftUp(start) == end or moveLeftDown(start) == end:
                     alreadyVisited.append(end)
                     paths.append([count + 1, alreadyVisited])
+                    if count < lowestEndCount:
+                        lowestEndCount = count
                 else:
+                    if paths != []:
+                        lowestEndCount = paths[-1][0]
                     if (moveUpRight(start) != start) and (moveUpRight(start) not in alreadyVisited):
                         alreadyVisitedCopy = alreadyVisited.copy()
                         alreadyVisitedCopy.append(moveUpRight(start))
@@ -126,6 +125,5 @@ def knight(p1, p2, minX, maxX, minY, maxY, paths = []):
     f = open("/home/dem/" + p1 + "-" + p2 + "-" + maxY + "x" + maxY + ".txt", 'w')
     f.write(str(smallestPaths))
     f.close()
-    # return smallestPaths
 
-knight('a1', 'd4', 'a', 'e', '1', '5')
+knight('c2', 'h8', 'a', 'h', '1', '8')
